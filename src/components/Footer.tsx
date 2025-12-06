@@ -326,22 +326,22 @@ const Footer = () => {
         {/* Achievement Badges */}
         <div className="mt-12 pt-8 border-t border-border/30">
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+
+
+
+
+
+
+
 
             </div>
-            <div className="hidden sm:block">•</div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-primary" />
 
-            </div>
-            <div className="hidden sm:block">•</div>
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-3 h-3 text-primary" />
 
-            </div>
+
+
+
           </div>
-        </div>
+
       </div>
     </footer>
   );

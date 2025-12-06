@@ -44,20 +44,7 @@ const portfolioItems = [
 ];
 
 const caseStudies = [
-  {
-    client: "TechCorp Inc.",
-    goal: "Increase organic traffic by 300%",
-    strategy: "Comprehensive SEO overhaul with content marketing",
-    execution: "12-month roadmap with weekly optimizations",
-    result: "412% traffic increase, 180% more conversions",
-  },
-  {
-    client: "Fashion Brand X",
-    goal: "Launch e-commerce with strong ROAS",
-    strategy: "Full-funnel performance marketing approach",
-    execution: "Multi-channel campaigns with dynamic creative",
-    result: "5.2x ROAS in first quarter, 1M+ impressions",
-  },
+ 
 ];
 
 const PortfolioSection = () => {
