@@ -3,38 +3,44 @@ import { useRef, useState } from "react";
 import { ExternalLink, ArrowRight, ArrowLeft, ChevronRight } from "lucide-react";
 
 const portfolioItems = [
-  {
-    category: "Website",
-    title: "TechStartup Pro",
-    description: "Modern SaaS landing page with 3D elements",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format",
-    metrics: { conversion: "+180%", traffic: "+250%" },
-    tags: ["React", "Three.js", "Tailwind"],
-  },
-  {
-    category: "E-commerce",
-    title: "Fashion Forward",
-    description: "Luxury fashion brand e-commerce platform",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format",
-    metrics: { sales: "+320%", aov: "+45%" },
-    tags: ["Shopify", "Custom Theme", "SEO"],
-  },
-  {
-    category: "Marketing",
-    title: "FinTech Growth",
-    description: "Performance marketing for fintech startup",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format",
-    metrics: { leads: "+500%", cpl: "-60%" },
-    tags: ["Meta Ads", "Google Ads", "CRO"],
-  },
-  {
-    category: "Branding",
-    title: "EcoLife Rebrand",
-    description: "Complete brand identity overhaul",
-    image: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=800&auto=format",
-    metrics: { awareness: "+400%", engagement: "+200%" },
-    tags: ["Brand Strategy", "Design", "Social"],
-  },
+  
+    {
+      category: "Corporate Website",
+      title: "Cavendish Trader",
+      description: "High-performance stock market and trading analytics platform with secure architecture and modern UI.",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format",
+      metrics: { performance: "+210%", userBase: "+320%" },
+      tags: ["React", "Next.js", "Tailwind", "API Integration"]
+    },
+  
+    {
+      category: "Portfolio Website",
+      title: "Anshumesh Saini — Portfolio",
+      description: "Personal portfolio website showcasing skills, experience, projects, and digital footprint with smooth UX.",
+      image: "https://images.unsplash.com/photo-1522199710521-72d69614c702?w=800&auto=format",
+      metrics: { engagement: "+450%", retention: "+180%" },
+      tags: ["JavaScript", "React", "GSAP", "Responsive Design"]
+    },
+  
+    {
+      category: "Organization Website",
+      title: "NHRWWO Official Website",
+      description: "Government/NGO website featuring informational pages, mission, welfare programs, image galleries, and announcements.",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format",
+      metrics: { awareness: "+500%", trust: "+300%" },
+      tags: ["HTML", "CSS", "Bootstrap", "CMS Integration"]
+    },
+  
+    {
+      category: "Community Portal",
+      title: "North Indians in UAE",
+      description: "A modern community web portal providing resources, events, news updates, registration, and contact features.",
+      image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&auto=format",
+      metrics: { communityGrowth: "+380%", interaction: "+240%" },
+      tags: ["Next.js", "Tailwind", "Forms", "Content Management"]
+    }
+  
+  
 ];
 
 const caseStudies = [

@@ -1,5 +1,6 @@
 import { Zap, Twitter, Linkedin, Instagram, Facebook, ArrowUp, Sparkles, Shield, TrendingUp } from "lucide-react";
 import { useState } from "react";
+import logo from '../assets/logo.jpg'
 
 const footerLinks = {
   services: [
@@ -75,8 +76,8 @@ const Footer = () => {
             <div className="sticky top-8">
               <a href="#" className="inline-flex items-center gap-3 mb-6 group">
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border border-primary/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-105 transition-transform duration-300">
-                    <Zap className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12  bg-gradient-to-br from-primary/20 via-primary/10 to-transparent border border-primary/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-105 transition-transform duration-300">
+<img src={logo} alt="" />
                   </div>
                   <div className="absolute -inset-1 rounded-2xl bg-primary/10 blur-md -z-10 group-hover:bg-primary/20 transition-colors"></div>
                 </div>
@@ -327,17 +328,17 @@ const Footer = () => {
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-              <span>99.9% Uptime</span>
+
             </div>
             <div className="hidden sm:block">•</div>
             <div className="flex items-center gap-2">
               <Sparkles className="w-3 h-3 text-primary" />
-              <span>500+ Successful Projects</span>
+
             </div>
             <div className="hidden sm:block">•</div>
             <div className="flex items-center gap-2">
               <TrendingUp className="w-3 h-3 text-primary" />
-              <span>Average 3.2x ROI</span>
+
             </div>
           </div>
         </div>

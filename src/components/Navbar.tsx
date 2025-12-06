@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
+import logo from '../assets/logo.jpg'
 
 const navLinks = [
   { name: "Services", href: "#services" },
@@ -39,8 +40,8 @@ const Navbar = () => {
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 group">
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/30 group-hover:border-primary transition-colors">
-                  <Zap className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10  bg-primary/20 flex items-center justify-center border border-primary/30 group-hover:border-primary transition-colors">
+<img src={logo} alt="" />
                 </div>
                 <div className="absolute inset-0 rounded-xl bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>

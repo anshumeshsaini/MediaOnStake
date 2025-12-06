@@ -66,6 +66,13 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if we're still in multi-step selection
+    if (currentStep < 2) {
+      setCurrentStep(2); // Move to final form
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Simulate form submission
@@ -84,6 +91,194 @@ const ContactSection = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
+  };
+
+  const renderFormStep = () => {
+    // Success state
+    if (currentStep === 3) {
+      return (
+        <div className="glass-card p-8 text-center">
+          <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="w-8 h-8 text-green-500" />
+          </div>
+          <h3 className="font-display font-bold text-2xl text-foreground mb-3">
+            Message Sent!
+          </h3>
+          <p className="text-muted-foreground mb-6">
+            Thank you for contacting us. We'll get back to you within 24 hours.
+          </p>
+          <button
+            onClick={() => {
+              setCurrentStep(0);
+              setFormData({
+                service: "",
+                budget: "",
+                name: "",
+                email: "",
+                company: "",
+                message: "",
+              });
+            }}
+            className="btn-primary mx-auto"
+          >
+            Send Another Message
+          </button>
+        </div>
+      );
+    }
+
+    // Step selection (first two steps)
+    if (currentStep < 2) {
+      const step = formSteps[currentStep];
+      return (
+        <div className="glass-card p-8">
+          {currentStep > 0 && (
+            <button
+              onClick={goBack}
+              className="flex items-center gap-2 text-primary hover:opacity-80 mb-6 transition-opacity"
+              type="button"
+            >
+              <ArrowRight className="w-4 h-4 rotate-180" />
+              Back
+            </button>
+          )}
+          
+          <h3 className="font-display font-bold text-2xl text-foreground mb-6">
+            {step.title}
+          </h3>
+          <div className="space-y-3">
+            {step.options.map((option, index) => (
+              <button
+                key={index}
+                onClick={() => handleOptionSelect(option)}
+                className="w-full p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 text-left transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                type="button"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-foreground font-medium">{option}</span>
+                  <ArrowRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100" />
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // Final form step
+    return (
+      <form onSubmit={handleSubmit} className="glass-card p-8">
+        <div className="mb-8">
+          <h3 className="font-display font-bold text-2xl text-foreground mb-2">
+            Almost done! Just a few details
+          </h3>
+          <p className="text-muted-foreground">
+            We'll use this information to prepare for our call
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          {/* Service and Budget Summary */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 rounded-lg bg-primary/5 border border-primary/10">
+              <span className="text-sm text-muted-foreground">Service</span>
+              <p className="font-medium text-foreground">{formData.service}</p>
+            </div>
+            <div className="p-4 rounded-lg bg-primary/5 border border-primary/10">
+              <span className="text-sm text-muted-foreground">Budget</span>
+              <p className="font-medium text-foreground">{formData.budget}</p>
+            </div>
+          </div>
+
+          {/* Contact Form Fields */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                placeholder="John Doe"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                Work Email *
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                placeholder="john@company.com"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-2">
+              Company Name
+            </label>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              placeholder="Your Company"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-2">
+              Project Details
+            </label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              rows={4}
+              className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+              placeholder="Tell us about your project, goals, timeline..."
+            />
+          </div>
+
+          <div className="flex items-center gap-4 pt-4">
+            <button
+              type="button"
+              onClick={goBack}
+              className="px-6 py-3 rounded-xl border border-border hover:bg-muted transition-colors"
+            >
+              Back
+            </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary flex items-center gap-2"
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <Send className="w-4 h-4" />
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </form>
+    );
   };
 
   return (
@@ -114,177 +309,15 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Form Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="glass-card p-8"
           >
-            {/* Progress */}
-            <div className="flex gap-2 mb-8">
-              {[0, 1, 2].map((step) => (
-                <div
-                  key={step}
-                  className={`h-1 flex-1 rounded-full transition-all ${
-                    step <= currentStep ? "bg-primary" : "bg-muted"
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Step 1 & 2: Multiple Choice */}
-            {currentStep < 2 && (
-              <div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-6">
-                  {formSteps[currentStep].title}
-                </h3>
-                <div className="space-y-3">
-                  {formSteps[currentStep].options.map((option) => (
-                    <button
-                      key={option}
-                      onClick={() => handleOptionSelect(option)}
-                      className="w-full text-left p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all group flex items-center justify-between"
-                    >
-                      <span className="text-foreground">{option}</span>
-                      <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                    </button>
-                  ))}
-                </div>
-                {currentStep > 0 && (
-                  <button
-                    onClick={goBack}
-                    className="mt-4 text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    ← Go back
-                  </button>
-                )}
-              </div>
-            )}
-
-            {/* Step 3: Contact Details */}
-            {currentStep === 2 && (
-              <form onSubmit={handleSubmit}>
-                <h3 className="font-display text-xl font-bold text-foreground mb-6">
-                  Almost there! Your details
-                </h3>
-                <div className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm text-muted-foreground mb-2 block">
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:outline-none text-foreground"
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm text-muted-foreground mb-2 block">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:outline-none text-foreground"
-                        placeholder="john@company.com"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-sm text-muted-foreground mb-2 block">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:outline-none text-foreground"
-                      placeholder="Your Company"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm text-muted-foreground mb-2 block">
-                      Tell us more (optional)
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-xl bg-muted border border-border focus:border-primary focus:outline-none text-foreground resize-none"
-                      placeholder="Share your goals, challenges, or any specific requirements..."
-                    />
-                  </div>
-                  <div className="flex gap-4">
-                    <button
-                      type="button"
-                      onClick={goBack}
-                      className="px-6 py-3 rounded-xl border border-border text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      Back
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn-neon flex-1 flex items-center justify-center gap-2"
-                    >
-                      {isSubmitting ? (
-                        <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="w-5 h-5" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </form>
-            )}
-
-            {/* Success State */}
-            {currentStep === 3 && (
-              <div className="text-center py-8">
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 border border-primary/30">
-                  <CheckCircle className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-                  Message Sent!
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Thank you for reaching out. We'll get back to you within 24 hours
-                  with a personalized strategy.
-                </p>
-                <button
-                  onClick={() => {
-                    setCurrentStep(0);
-                    setFormData({
-                      service: "",
-                      budget: "",
-                      name: "",
-                      email: "",
-                      company: "",
-                      message: "",
-                    });
-                  }}
-                  className="btn-ghost-neon"
-                >
-                  Send Another Message
-                </button>
-              </div>
-            )}
+            {renderFormStep()}
           </motion.div>
 
           {/* Contact Info */}
@@ -302,7 +335,7 @@ const ContactSection = () => {
               </h4>
               <div className="space-y-4">
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+917379340224"
                   className="flex items-center gap-4 p-4 rounded-xl bg-muted hover:bg-primary/10 transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/30">
@@ -318,7 +351,7 @@ const ContactSection = () => {
                   </div>
                 </a>
                 <a
-                  href="https://wa.me/7379340224"
+                  href="https://wa.me/917379340224"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-xl bg-muted hover:bg-primary/10 transition-colors group"
@@ -336,7 +369,7 @@ const ContactSection = () => {
                   </div>
                 </a>
                 <a
-                  href="mailto:hello@nexus.agency"
+                  href="mailto:hello@mediaonstake.agency"
                   className="flex items-center gap-4 p-4 rounded-xl bg-muted hover:bg-primary/10 transition-colors group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/30">
@@ -344,7 +377,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <span className="text-foreground font-medium block">
-                      hello@MediaOnStake.agency
+                      hello@mediaonstake.agency
                     </span>
                     <span className="text-muted-foreground text-sm">
                       Email us anytime
