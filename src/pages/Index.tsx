@@ -14,16 +14,16 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>NEXUS - Digital Growth Agency | Performance Marketing & Web Development</title>
+        <title>MediaOnStake - Digital Growth Agency | Performance Marketing & Web Development</title>
         <meta
           name="description"
-          content="NEXUS is a premium digital agency specializing in performance marketing, SEO, web development, and brand strategy. We help businesses grow, scale, and dominate their market."
+          content="MediaOnsStake is a premium digital agency specializing in performance marketing, SEO, web development, and brand strategy. We help businesses grow, scale, and dominate their market."
         />
         <meta
           name="keywords"
           content="digital agency, performance marketing, SEO, web development, brand strategy, social media marketing"
         />
-        <link rel="canonical" href="https://nexus.agency" />
+        <link rel="canonical" href="https://www.mediaonstake.com/" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
