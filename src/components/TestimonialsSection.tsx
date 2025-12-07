@@ -3,42 +3,47 @@ import { useRef, useState } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
-  {
-    name: "Sarah Johnson",
-    role: "CEO, TechStartup Pro",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format",
-    content:
-      "Working with NEXUS transformed our entire digital presence. We went from struggling with 100 visitors a day to over 10,000. Their performance marketing strategy is absolutely unmatched.",
-    rating: 5,
-    metrics: "10,000% traffic increase",
-  },
-  {
-    name: "Michael Chen",
-    role: "Founder, E-commerce Brand",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format",
-    content:
-      "The website they built for us isn't just beautiful—it converts like crazy. Our sales increased by 300% within the first three months. Best investment we ever made.",
-    rating: 5,
-    metrics: "300% sales increase",
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Marketing Director, FinTech Co",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format",
-    content:
-      "Their Google Ads expertise saved us from wasting money on ineffective campaigns. Now every dollar we spend brings back five. The ROI speaks for itself.",
-    rating: 5,
-    metrics: "5x ROAS achieved",
-  },
-  {
-    name: "David Park",
-    role: "COO, SaaS Platform",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format",
-    content:
-      "From branding to website to marketing—they handled everything. Our brand recognition skyrocketed and we're now considered a market leader in our niche.",
-    rating: 5,
-    metrics: "Market leader status",
-  },
+
+    {
+      name: "Sonal Singh",
+      role: "Director, NHRRWO",
+      image: "https://www.nhrwwo.in/assets/Logopit_1690716648215-BQyKVKEg.png",
+      content:
+        "MediaOnStake delivered an exceptionally polished and impactful website for NHRRWO. The UI is clean, fast, and built with precision. Our engagement, member activity, and overall visibility have significantly increased.",
+      rating: 5,
+      metrics: "160% rise in member engagement"
+    },
+    {
+      name: "Prathmeesh Saini",
+      role: "Founder, North Indian UAE",
+      image: "https://imgs.search.brave.com/y8CM0a2U9BcwZfGi_f8FubfkmrjDXEz-4wcUxeeCqik/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9kMmdq/cWg5ajI2dW5wMC5j/bG91ZGZyb250Lm5l/dC9wcm9maWxlcGlj/L2U0NzU1N2Q1ZjRj/YzEzMzA0OTBjNWQ1/OGJmODA3Nzc0",
+      content:
+        "We wanted a premium Indian-themed website that speaks to the UAE audience — and MediaOnStake nailed it perfectly. The design, speed, animations, and user flow feel international-level. Our customer retention and interactions have shot up massively.",
+      rating: 5,
+      metrics: "Customer interactions up by 3.8x"
+    },
+    {
+      name: "Himashu Ojha",
+      role: "Owner, Ohja Printing Press",
+      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format",
+      content:
+        "MediaOnStake created a highly professional and visually appealing website for our printing press. It showcases our services with clarity and style. We now receive consistent leads every week — the website truly works for us.",
+      rating: 5,
+      metrics: "Leads increased by 240%"
+    },
+    {
+      name: "Anshumesh Saini",
+      role: "Co Founder, CyberShield",
+      image: "https://avatars.githubusercontent.com/u/119862734?s=48&v=4",
+      content:
+        "MediaOnStake’s development and UI excellence helped establish a powerful digital presence for my personal portfolio. The animations, responsiveness, and unique design language helped attract clients instantly.",
+      rating: 5,
+      metrics: "Client conversions increased by 300%"
+    }
+
+  
+
+  
 ];
 
 const TestimonialsSection = () => {
