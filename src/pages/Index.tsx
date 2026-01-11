@@ -17,6 +17,7 @@ import researchteam from "../assets/teams/ResearchTeam.png"
 import seo from "../assets/teams/SEO.png"
 import ShaderBackground from '@/components/shader-background';
 import socialmedia from "../assets/teams/Socialmediamanager.png";
+import harshcmo from "../assets/teams/harshcmo.jpeg"
 
 import researchteam2 from "../assets/teams/Researchteam2.jpeg"
 /* -------------------- DATA -------------------- */
@@ -69,34 +70,41 @@ const teamMembers = [
   },
   {
     id: "3",
+    name: "Harsh Chauhan ",
+    role: "CMO & SEO Manager",
+    image: harshcmo,
+    bio: "Frontend specialist with expertise in React, animations, and performance-optimized web apps.",
+  },
+  {
+    id: "4",
     name: "Tarang ",
     role: "Manager",
     image: manager,
     bio: "Frontend specialist with expertise in React, animations, and performance-optimized web apps.",
   },
   {
-    id: "4",
+    id: "5",
     name: "Shristi Chandra Choudhary",
     role: "Research and Development",
     image: researchteam,
     bio: "Backend engineer skilled in APIs, databases, and scalable server-side architectures.",
   },
   {
-    id: "5",
+    id: "6",
     name: "Pratistha Mishra",
     role: "Research Analyst",
     image: researchteam2,
     bio: "Storyteller and community builder creating meaningful connections with audiences.",
   },
   {
-    id: "6",
+    id: "7",
     name: "Sehna Agrawal",
     role: "Social Meida Manager",
     image: socialmedia,
     bio: "Storyteller and community builder creating meaningful connections with audiences.",
   },
   {
-    id: "7",
+    id: "8",
     name: "Sakshi Sah",
     role: "SEO Specialist",
     image: seo,
