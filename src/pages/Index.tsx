@@ -18,6 +18,7 @@ import seo from "../assets/teams/SEO.png"
 import ShaderBackground from '@/components/shader-background';
 import socialmedia from "../assets/teams/Socialmediamanager.png";
 import harshcmo from "../assets/teams/harshcmo.jpeg"
+import pathak from "../assets/teams/pathak.jpeg"
 
 import researchteam2 from "../assets/teams/Researchteam2.jpeg"
 /* -------------------- DATA -------------------- */
@@ -73,6 +74,13 @@ const teamMembers = [
     name: "Harsh Chauhan ",
     role: "CMO & SEO Manager",
     image: harshcmo,
+    bio: "Frontend specialist with expertise in React, animations, and performance-optimized web apps.",
+  },
+  {
+    id: "3",
+    name: "PARIKSHIT PATHAK",
+    role: "Co Founder and BDE",
+    image: pathak,
     bio: "Frontend specialist with expertise in React, animations, and performance-optimized web apps.",
   },
   {
